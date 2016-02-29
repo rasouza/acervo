@@ -1,0 +1,37 @@
+<?php
+
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
+
+class CreateArquivosTable extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create('arquivos', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('titulo');
+            $table->text('descricao');
+            $table->string('professor');
+            $table->string('materia');
+            $table->string('categoria');
+            $table->string('turma');
+            $table->string('path')->nullable();
+            $table->timestamps();
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::drop('arquivos');
+    }
+}
