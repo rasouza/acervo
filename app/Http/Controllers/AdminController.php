@@ -15,6 +15,11 @@ class AdminController extends Controller
         $this->middleware('auth');
     }
 
+    public function index()
+    {
+        return view('lista');
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -67,7 +72,10 @@ class AdminController extends Controller
      */
     public function destroy($id)
     {
+        $file = Arquivo::find($id)->path;
+        if (file_exists("acervo/$file"))
+            unlink("acervo/$file");
         Arquivo::destroy($id);
-        return redirect('/');
+        return redirect('admin/');
     }
 }

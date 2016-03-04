@@ -47,7 +47,26 @@
             <li><a href="{{ url('professores') }}"><span class="glyphicon glyphicon-star"></span> Professores</a></li>
             <li><a href="{{ url('categorias') }}"><span class="glyphicon glyphicon-list"></span> Categorias</a></li>
             <li role="presentation" class="divider"></li>
-            <li><a href="{{ url('admin/create') }}"><span class="glyphicon glyphicon-user"></span> Administrador</a></li>
+            <li class="parent">
+                <a href="#">
+                    <span class="glyphicon glyphicon-user"></span> Administrador
+                    <span data-toggle="collapse" href="#sub-item-1" class="icon pull-right">
+                        <em class="glyphicon glyphicon-s glyphicon-plus"></em>
+                    </span>
+                </a>
+                <ul class="children collapse" id="sub-item-1">
+                    <li>
+                        <a class="" href="{{ url('admin/create') }}">
+                            <span class="glyphicon glyphicon-plus"></span> Enviar Arquivo
+                        </a>
+                    </li>
+                    <li>
+                        <a class="" href="{{ url('admin/') }}">
+                            <span class="glyphicon glyphicon-pencil"></span> Gerenciar Arquivos
+                        </a>
+                    </li>
+                </ul>
+            </li>
         @show
     </ul>
     <div class="attribution">Criado por <a href="http://www.rasouza.com.br">R. A. Souza</a></div>
@@ -91,10 +110,10 @@
 
     $(window).on('resize', function () {
         if ($(window).width() > 768) $('#sidebar-collapse').collapse('show')
-    })
+    });
     $(window).on('resize', function () {
         if ($(window).width() <= 767) $('#sidebar-collapse').collapse('hide')
-    })
+    });
 </script>
 </body>
 

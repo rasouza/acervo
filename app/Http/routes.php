@@ -17,6 +17,7 @@ Route::get('arquivos/turma/{turma?}', 'ArquivoController@turma');
 Route::get('arquivos/professor/{professor?}', 'ArquivoController@professor');
 Route::get('arquivos/categoria/{categoria?}', 'ArquivoController@categoria');
 Route::get('arquivos/procurar/{texto}', 'ArquivoController@procurar');
+Route::get('arquivos/tudo', 'ArquivoController@tudo');
 
 
 
@@ -32,7 +33,8 @@ Route::get('arquivos/procurar/{texto}', 'ArquivoController@procurar');
 */
 
 Route::group(['middleware' => ['web']], function () {
-    Route::resource('admin', 'AdminController', ['only' => ['create', 'store']]);
+    Route::get('admin/destroy/{id}', 'AdminController@destroy');
+    Route::resource('admin', 'AdminController', ['only' => ['index', 'create', 'store']]);
 });
 
 Route::group(['middleware' => 'web'], function () {

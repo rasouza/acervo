@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Arquivo;
-use Illuminate\Http\Request;
 
 use App\Http\Requests;
 
@@ -44,6 +43,13 @@ class ArquivoController extends Controller
     public function procurar($texto) {
 
         $arquivos = Arquivo::search(utf8_encode($texto))->get();
+        return response()->json($arquivos);
+    }
+
+    public function tudo()
+    {
+        $arquivos = Arquivo::orderBy('created_at', 'desc')->get();
+
         return response()->json($arquivos);
     }
 
